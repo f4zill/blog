@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ByteLog - Tech Chronicles</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f9f9fb;
+      --text: #222;
+      --accent: #0070f3;
+      --muted: #666;
+      --card-bg: #fff;
+      --border: #e5e5e5;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0a0f1c;
+      --text: #eaeaea;
+      --accent: #00b4d8;
+      --muted: #aaa;
+      --card-bg: #111827;
+      --border: #1f2937;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    html, body {
+        height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .logo {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--accent);
+      z-index: 1000;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      z-index: 1000;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 100px 20px 40px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+
+    .post-list {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    .post-list li {
+      margin-bottom: 14px;
+    }
+
+    .post-list a {
+      text-decoration: none;
+      font-size: 1.05rem;
+      color: var(--accent);
+      border-bottom: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .post-list a:hover {
+      border-bottom: 1px solid var(--accent);
+      color: var(--text);
+    }
+
+    #seeMore {
+      margin-top: 30px;
+      display: block;
+      padding: 10px 16px;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.95rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body data-theme="light">
+  <div class="logo">FBee</div>
+  <button class="theme-toggle" onclick="toggleTheme()">Mood-Switch</button>
+
+  <div class="container" id="home">
+    <section class="hero">
+      <h1>Welcome to BeeByte</h1>
+      <p>The only dose of <b>Bee</b> <del>Sting</del> <b>Byte</b> you'll ever need</p>
+    </section>
+
+    <section id="posts">
+      <ul class="post-list">
+        <li><a href="posts/astro.html">Why I Switched to Astro[Template]</a></li>
+        <li class="hidden"><a href="posts/devtools-guide.html">The Developer Tools I Can't Live Without[Template]</a></li>
+      </ul>
+    </section>
+
+    <button id="seeMore">See More</button>
+  </div>
+
+  <footer id="contact">
+    Made with by You | <a href="mailto:mfazilimaad523@gmail.com" style="color: var(--accent); text-decoration: none;">contact@FrostBee</a>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      const current = body.getAttribute('data-theme');
+      body.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+    }
+
+    // Show More Logic
+    const seeMoreBtn = document.getElementById("seeMore");
+    const hiddenPosts = document.querySelectorAll(".post-list li.hidden");
+
+    seeMoreBtn.addEventListener("click", () => {
+      hiddenPosts.forEach(post => post.classList.remove("hidden"));
+      seeMoreBtn.style.display = "none";
+    });
+  </script>
+</body>
+</html>
