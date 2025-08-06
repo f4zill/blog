@@ -32,7 +32,7 @@
     }
 
     html, body {
-        height: 100%;
+      height: 100%;
       background: var(--bg);
       color: var(--text);
       transition: background 0.3s, color 0.3s;
@@ -62,10 +62,19 @@
       z-index: 1000;
     }
 
-    .container {
-      max-width: 900px;
+    .layout {
+      display: flex;
+      gap: 40px;
+      max-width: 1100px;
       margin: auto;
       padding: 100px 20px 40px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    .main-content {
+      flex: 1;
+      min-width: 0;
     }
 
     h1 {
@@ -125,26 +134,111 @@
     .hidden {
       display: none;
     }
+
+    aside {
+      width: 260px;
+      flex-shrink: 0;
+    }
+
+    .about-box {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .about-box img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 15px;
+    }
+
+    .about-box h3 {
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .about-box p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .about-box a {
+      color: var(--accent);
+      font-size: 0.85rem;
+      display: block;
+      margin: 10px 0;
+      text-decoration: none;
+    }
+
+    .about-socials {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .layout {
+        flex-direction: column;
+        padding-top: 120px;
+      }
+
+      aside {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body data-theme="light">
   <div class="logo">FBee</div>
   <button class="theme-toggle" onclick="toggleTheme()">Mood-Switch</button>
 
-  <div class="container" id="home">
-    <section class="hero">
-      <h1>Welcome to BeeByte</h1>
-      <p>The only dose of <b>Bee</b> <del>Sting</del> <b>Byte</b> you'll ever need</p>
-    </section>
+  <div class="layout">
+    <!-- Main Section -->
+    <div class="main-content">
+      <section class="hero">
+        <h1>Welcome to BeeByte</h1>
+        <p>The only dose of <b>Bee</b> <del>Sting</del> <b>Byte</b> you'll ever need</p>
+      </section>
 
+<<<<<<< HEAD
     <section id="posts">
       <ul class="post-list">
         <li><a href="posts/spidy.html">How I learn any Language</a></li>
         <li class="hidden"><a href="posts/devtools-guide.html">Nothing to read!</a></li>
       </ul>
     </section>
+=======
+      <section id="posts">
+        <ul class="post-list">
+          <li><a href="posts/spidy.html">How I learn any Language</a></li>
+          <li class="hidden"><a href="posts/devtools-guide.html">Nothing to read!</a></li>
+        </ul>
+      </section>
+>>>>>>> 2e40865 (Updated index.html and added new folder)
 
-    <button id="seeMore">See More</button>
+      <button id="seeMore">See More</button>
+    </div>
+
+    <!-- About Me Section -->
+    <aside>
+      <div class="about-box">
+        <img src="\assets\tsukishima kei_ icon.jpg" alt="Profile picture">
+        <h3>FrostBee</h3>
+        <p>Learning through living.<br>Writing through wandering.</p>
+        <a href="mailto:contact@FrostBee">contact@FrostBee</a>
+        <div class="about-socials">
+          <a href="https://github.com/yourusername" target="_blank">🐱‍💻</a>
+          <a href="https://x.com/yourhandle" target="_blank">🐦</a>
+          <a href="https://linkedin.com/in/yourhandle" target="_blank">💼</a>
+        </div>
+      </div>
+    </aside>
   </div>
 
   <footer id="contact">
