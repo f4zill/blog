@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BeeByte</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f7f4ea;
+      --text: #2a261f;
+      --accent: #b15c2a;
+      --muted: #7a6f63;
+      --card-bg: #fffdf7;
+      --border: #d9c9a3;
+      --retro-shadow: 2px 2px 0px rgba(0,0,0,0.25);
+      --grain: url('https://i.imgur.com/o8N1G7s.png');
+    }
+
+    [data-theme="dark"] {
+      --bg: #1a1814;
+      --text: #e7dfd1;
+      --accent: #e0a96d;
+      --muted: #b8a894;
+      --card-bg: #26231d;
+      --border: #3d372d;
+      --retro-shadow: 2px 2px 0px rgba(0,0,0,0.45);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--bg) var(--grain);
+      background-size: 300px;
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+      filter: contrast(95%) saturate(85%) sepia(10%);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .logo {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      font-family: 'Press Start 2P';
+      font-size: 1rem;
+      color: var(--accent);
+      text-shadow: var(--retro-shadow);
+      letter-spacing: 2px;
+      z-index: 1000;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--accent);
+      border: 1px solid #00000033;
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-family: 'VT323';
+      font-size: 1rem;
+      box-shadow: var(--retro-shadow);
+      letter-spacing: 1px;
+    }
+
+    .layout {
+      display: flex;
+      gap: 40px;
+      max-width: 1100px;
+      margin: auto;
+      padding: 100px 20px 40px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    .main-content { flex: 1; }
+
+    h1 {
+      font-size: 2.3rem;
+      margin-bottom: 10px;
+      color: var(--accent);
+      font-family: 'Press Start 2P';
+      line-height: 1.5;
+      text-shadow: 2px 2px rgba(0,0,0,0.35);
+      transform: translateY(-2px);
+      animation: retroBounce 2s infinite alternate;
+    }
+
+    @keyframes retroBounce {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-4px); }
+    }
+
+    .hero p {
+      color: var(--muted);
+      margin-bottom: 30px;
+      font-family: 'VT323';
+      font-size: 1.4rem;
+      opacity: 0.9;
+      background: repeating-linear-gradient(0deg, rgba(0,0,0,0.02), rgba(0,0,0,0.02) 2px, transparent 2px, transparent 4px);
+      padding: 8px 12px;
+      border-left: 4px solid var(--accent);
+      font-style: italic;
+    }
+
+    .post-list {
+      padding-left: 30px;
+      margin-top: 20px;
+      list-style: square;
+      font-family: 'VT323';
+      font-size: 1.25rem;
+    }
+
+    .post-list li {
+      transition: transform 0.3s, filter 0.3s;
+    }
+
+    .post-list li:hover {
+      transform: scale(1.05) translateX(2px);
+      filter: brightness(1.15) sepia(0.15);
+    }
+
+    .post-list a {
+      text-decoration: none;
+      color: var(--accent);
+      padding-bottom: 2px;
+      border-bottom: 1px dotted var(--accent);
+      text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+      letter-spacing: 1px;
+    }
+
+    .post-list a:hover {
+      filter: brightness(1.2) contrast(1.1);
+      transform: translateX(3px);
+      display: inline-block;
+    }
+
+    #seeMore {
+      margin-top: 30px;
+      display: block;
+      padding: 10px 16px;
+      background: var(--accent);
+      color: #fff;
+      border: 1px solid #00000033;
+      font-family: 'VT323';
+      font-size: 1.2rem;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: var(--retro-shadow);
+      letter-spacing: 1px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    #seeMore:hover {
+      transform: translateY(-2px);
+      box-shadow: 5px 5px 0px rgba(0,0,0,0.5);
+    }
+
+    aside {
+      width: 260px;
+      flex-shrink: 0;
+    }
+
+    .about-box {
+      background: repeating-linear-gradient(-45deg, var(--card-bg), var(--card-bg) 6px, rgba(0,0,0,0.03) 7px, rgba(0,0,0,0.03) 12px);
+      padding: 20px;
+      border-radius: 10px;
+      border: 2px dashed var(--border);
+      text-align: center;
+      box-shadow: 3px 3px 0px rgba(0,0,0,0.5);
+      filter: contrast(1.05) brightness(0.98);
+      animation: pulseShadow 3s infinite alternate;
+    }
+
+    @keyframes pulseShadow {
+      0% { box-shadow: 3px 3px 0px rgba(0,0,0,0.5); }
+      100% { box-shadow: 6px 6px 0px rgba(0,0,0,0.6); }
+    }
+
+    .about-box img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 3px solid var(--accent);
+      filter: sepia(20%) contrast(1.1);
+      box-shadow: 2px 2px 0px rgba(0,0,0,0.35);
+    }
+
+    .about-socials {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      font-size: 1.5rem;
+      margin-top: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      font-size: 1.1rem;
+      color: var(--muted);
+      font-family: 'VT323';
+      opacity: 0.95;
+      border-top: 2px dotted var(--border);
+      letter-spacing: 1px;
+    }
+
+    /* Floating retro particles */
+    @keyframes floatParticle {
+      0% { transform: translateY(0) translateX(0); opacity: 0.2; }
+      50% { transform: translateY(-20px) translateX(5px); opacity: 0.5; }
+      100% { transform: translateY(0) translateX(0); opacity: 0.2; }
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: floatParticle 6s infinite ease-in-out;
+      opacity: 0.3;
+    }
+
+    @media (max-width: 768px) {
+      .layout { flex-direction: column; padding-top: 120px; }
+      aside { width: 100%; }
+    }
+  </style>
+</head>
+<body data-theme="light">
+  <div class="logo">FBee</div>
+  <button class="theme-toggle" onclick="toggleTheme()">Mood-Switch</button>
+
+  <div class="layout">
+    <div class="main-content">
+      <section class="hero">
+        <h1>Welcome to BeeByte</h1>
+        <p>The only dose of <b>Bee</b> <del>Sting</del> <b>Byte</b> you'll ever need</p>
+      </section>
+
+      <section id="posts">
+        <ul class="post-list">
+          <li><a href="posts/spidy.html">How I learn any Language</a></li>
+          <li class="hidden"><a href="posts/devtools-guide.html">Nothing to read!</a></li>
+          <li class="hidden"><a href="posts/plan_d_day.html">D DAY</a></li>
+        </ul>
+      </section>
+
+      <button id="seeMore">See More</button>
+    </div>
+
+    <aside>
+      <div class="about-box">
+        <img src="assets/tsukishima kei_ icon.jpg" alt="Profile picture">
+        <h3>FrostBee</h3>
+        <p>Learning through living.<br>Writing through wandering.</p>
+        <a href="mailto:contact@FrostBee">contact@FrostBee</a>
+        <div class="about-socials">
+          <a href="https://github.com/f4zill/blog" target="_blank">🐱‍💻</a>
+          <a href="https://x.com/yourhandle" target="_blank">🐦</a>
+          <a href="https://www.linkedin.com/in/fazilimaad523/" target="_blank">💼</a>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <footer id="contact">
+    Made with 💀 by FBee | <a href="mailto:mfazilimaad523@gmail.com" style="color: var(--accent); text-decoration: none;">contact@FrostBee</a>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      const current = body.getAttribute('data-theme');
+      body.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
+    }
+
+    const seeMoreBtn = document.getElementById("seeMore");
+    const hiddenPosts = document.querySelectorAll(".post-list li.hidden");
+
+    seeMoreBtn.addEventListener("click", () => {
+      hiddenPosts.forEach(post => post.classList.remove("hidden"));
+      seeMoreBtn.style.display = "none";
+    });
+
+    // Generate retro particles
+    for(let i=0;i<50;i++){
+      const p=document.createElement('div');
+      p.className='particle';
+      p.style.top=Math.random()*100+'%';
+      p.style.left=Math.random()*100+'%';
+      p.style.animationDuration= (4+Math.random()*4)+'s';
+      document.body.appendChild(p);
+    }
+  </script>
+</body>
+</html>
