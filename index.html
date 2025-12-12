@@ -57,6 +57,7 @@
 
     .post-list { padding-left:30px; margin-top:20px; list-style:square; font-family:'VT323'; font-size:1.25rem; }
     .post-list li { transition: transform 0.3s, filter 0.3s; }
+    .post-list li.hidden { display: none; }
     .post-list li:hover { transform: scale(1.05) translateX(2px); filter: brightness(1.15) sepia(0.15); }
     .post-list a { text-decoration:none; color: var(--accent); padding-bottom:2px; border-bottom:1px dotted var(--accent); text-shadow:2px 2px 0px rgba(0,0,0,0.3); letter-spacing:1px; }
     .post-list a:hover { filter: brightness(1.2) contrast(1.1); transform: translateX(3px); display:inline-block; }
@@ -91,9 +92,14 @@
 
       <section id="posts">
         <ul class="post-list">
-          <li><a href="posts/spidy.html">How I learn any Language</a></li>
-          <li class="hidden"><a href="posts/devtools-guide.html">Nothing to read!</a></li>
-          <li class="hidden"><a href="posts/plan_d_day.html">D DAY</a></li>
+          <!-- Visible posts -->
+          <li><a href="posts/spidy.html">How I Learn Any Language</a></li>
+          <li><a href="posts/intro_to_js.html">Intro to JavaScript</a></li>
+
+          <!-- Hidden posts -->
+          <li class="hidden"><a href="posts/devtools-guide.html">DevTools Guide</a></li>
+          <li class="hidden"><a href="posts/plan_d_day.html">D DAY Plan</a></li>
+          <li class="hidden"><a href="posts/css_tricks.html">CSS Tricks & Tips</a></li>
         </ul>
       </section>
 
